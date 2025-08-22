@@ -19,6 +19,7 @@ It does **not store images on disk**, making it **fast and secure**.
 - **Python 3.10+**
 - Virtual environment (recommended)
 - Dependencies listed in `requirements.txt`:
+
   ```txt
   Django==5.2.4
   djangorestframework==3.16.0
@@ -100,12 +101,23 @@ curl -X POST http://127.0.0.1:8000/remove-background/ -F "image=@my_image.jpg" -
 
 ---
 
+## 3. Automated Tests
+
+You can also validate the API using the automated test suite.  
+These tests check different scenarios such as successful background removal, missing or invalid files, wrong HTTP methods, internal errors, and file size limits.
+
+Run all tests with:
+```bash
+python manage.py test remover.tests.test_api -v 2
+```
+---
+
 ## 📂 Project Structure
 ```
 remove-bg-api/
 │
 ├─ config/              # Django project (settings, urls, wsgi)
-├─ remover/             # Main app with views and API endpoints
+├─ remover/             # Main app with views, API endpoints, and tests
 ├─ manage.py
 ├─ requirements.txt
 ├─ .gitignore
